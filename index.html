@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>nana Scraper</title>
+    <link rel="icon" href="favicon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.15.12/dist/css/uikit.min.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="uk-container uk-flex uk-flex-column uk-padding uk-width-xlarge">
+      <h1 class="uk-text-center uk-text-bold">nana Scraper</h1>
+      <form id="form" class="uk-text-center">
+        <input class="uk-margin uk-input" type="url" placeholder="https://nana-music.com/sounds/..." required>
+        <button class="uk-button uk-button-primary" type="submit">Get Audio</button>
+      </form>
+      <div id="results" class="uk-margin uk-flex uk-flex-column" hidden>
+        <h4 id="title" class="uk-text-bold uk-text-center"></h4>
+        <code id="link" style="white-space:unset"></code>
+        <audio id="audio" class="uk-margin-auto uk-margin" controls></audio>
+        <img id="image">
+      </div>
+      <hr>
+      <p class="uk-margin-remove uk-text-lead">What's nana?</p>
+      <p class="uk-text-meta"><a class="uk-text-primary" href="https://en.nana-music.com">nana</a> is a music collab app where you can record your singing and play by smartphone. You can communicate with users by "collab" which you can overlap sounds, or commenting users posted sounds.</p>
+      <p class="uk-margin-remove uk-text-lead">How does this work?</p>
+      <p class="uk-text-meta">Every request happens on client-side using <a class="uk-text-primary" href="https://allorigins.win">allOrigins</a> API, then using "advanced" RegEx expressions to retrieve sound data from the requested link.</p>
+      <p class="uk-margin-remove uk-text-lead">Why?</p>
+      <p class="uk-text-meta">👉👈</p>
+      <hr>
+      <div class="uk-text-small">
+        <p class="uk-margin-remove">Please give the artists credit by mentioning their username OR giving the source link</p>
+        <p class="uk-margin-remove">Maintained by <a href="https://github.com/sglkc">sglkc</a></p>
+        <p class="uk-margin-remove">Licensed under the <a href="https://github.com/sglkc/nana/LICENSE">MIT License</a></p>
+      </div>
+    </div>
+  </body>
+</html>
