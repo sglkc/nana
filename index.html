@@ -12,9 +12,10 @@
     <div class="uk-container uk-flex uk-flex-column uk-padding uk-width-xlarge">
       <h1 class="uk-text-center uk-text-bold">nana Scraper</h1>
       <form id="form" class="uk-text-center">
-        <input class="uk-margin uk-input" type="url" placeholder="https://nana-music.com/sounds/..." required>
+        <input class="uk-margin uk-input" type="url" pattern="https:\/\/(en\.)?nana-music\.com\/sounds\/[a-f0-9]{6,}" placeholder="https://nana-music.com/sounds/..." required>
         <button class="uk-button uk-button-primary" type="submit">Get Audio</button>
       </form>
+      <h5 id="response" class="uk-text-bold uk-text-center" hidden></h5>
       <div id="results" class="uk-margin uk-flex uk-flex-column" hidden>
         <h4 id="title" class="uk-text-bold uk-text-center"></h4>
         <code id="link" style="white-space:unset"></code>
@@ -23,14 +24,23 @@
       </div>
       <hr>
       <p class="uk-margin-remove uk-text-lead">What's nana?</p>
-      <p class="uk-text-meta"><a class="uk-text-primary" href="https://en.nana-music.com">nana</a> is a music collab app where you can record your singing and play by smartphone. You can communicate with users by "collab" which you can overlap sounds, or commenting users posted sounds.</p>
+      <p class="uk-text-meta">
+        <a class="uk-text-primary" href="https://en.nana-music.com">nana</a>
+        is a music collab app where you can record your singing and play by
+        smartphone. You can communicate with users by "collab" which you can
+        overlap sounds, or commenting users posted sounds.
+      </p>
       <p class="uk-margin-remove uk-text-lead">How does this work?</p>
-      <p class="uk-text-meta">Every request happens on client-side using <a class="uk-text-primary" href="https://allorigins.win">allOrigins</a> API, then using "advanced" RegEx expressions to retrieve sound data from the requested link.</p>
+      <p class="uk-text-meta">
+        Every request happens on client-side using
+        <a class="uk-text-primary" href="https://corsproxy.org/">*CORS Proxy API</a>
+        then processed with RegEx expressions to retrieve data from the response.
+      </p>
       <p class="uk-margin-remove uk-text-lead">Why?</p>
       <p class="uk-text-meta">👉👈</p>
       <hr>
       <div class="uk-text-small">
-        <p class="uk-margin-remove">Please give the artists credit by mentioning their username OR giving the source link</p>
+        <p class="uk-margin-remove">Let's normalize not stealing everything from artists :D</p>
         <p class="uk-margin-remove">Maintained by <a href="https://github.com/sglkc">sglkc</a></p>
         <p class="uk-margin-remove">Licensed under the <a href="https://github.com/sglkc/nana/LICENSE">MIT License</a></p>
       </div>
