@@ -4,12 +4,15 @@ document
     e.preventDefault();
 
     const response = document.getElementById('response');
-    const url = e.target[0].value;
 
     response.removeAttribute('hidden');
     response.innerText = 'Fetching page from url';
 
-    fetch('https://corsproxy.org/?' + encodeURIComponent(url))
+    const url = new URL('https://proxy.mangaraiku.eu.org/')
+
+    url.searchParams.set('url', e.target[0].value)
+
+    fetch(url)
       .then((res) => {
         if (res.ok) return res.text();
         response.innerText = 'Failed to fetch page, try again later?';
