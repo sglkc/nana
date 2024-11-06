@@ -8,27 +8,30 @@ document
     response.removeAttribute('hidden');
     response.innerText = 'Fetching page from url';
 
-    const url = new URL('https://proxy.mangaraiku.eu.org/')
+    const nanaUrl = new URL(e.target[0].value)
+    const id = nanaUrl.pathname.split('/').at(-1)
 
-    url.searchParams.set('url', e.target[0].value)
+    nanaUrl.host = 'jackson.nana-music.com'
+    nanaUrl.pathname = '/v2/webplayer/' + id
 
-    fetch(url)
+    const fetchUrl = new URL('https://api.allorigins.win/raw')
+
+    fetchUrl.searchParams.set('url', nanaUrl.toString())
+
+    fetch(fetchUrl)
       .then((res) => {
-        if (res.ok) return res.text();
+        if (res.ok) return res.json();
         response.innerText = 'Failed to fetch page, try again later?';
       })
       .then((res) => {
-        const [, title] = res.match(/<title>([\S\s]+) - .+<\/title>/);
-        const [, sound_url] = res.match(/sound_url=(\S+);.\.image/);
-        const [, image_url] = res.match(/property="og:image" content="(\S+)">/);
-        const sound = JSON.parse(sound_url);
+        const { title, post_id, sound_url } = res
 
         response.setAttribute('hidden', true);
         document.getElementById('results').removeAttribute('hidden');
         document.getElementById('title').innerText = title;
-        document.getElementById('link').innerText = sound;
-        document.getElementById('audio').src = sound;
-        document.getElementById('image').src = image_url;
+        document.getElementById('link').innerText = sound_url;
+        document.getElementById('audio').src = sound_url;
+        document.getElementById('image').src = 'https://d2tuwg44y6gooq.cloudfront.net/?post_id=' + post_id;
       })
       .catch((err) => {
         response.innerText = 'Error: ' + err;
